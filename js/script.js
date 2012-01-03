@@ -81,9 +81,9 @@ jQuery(document).ready(function($) {
 
   $.each(categories, function(k, v) { 
     if (k == 3) {
-      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="' + k + '" checked /> ' + v + '</li>');
+      $('#st_categories').append('<li><input type="checkbox" id="cat-' + k + '" class="map_cat" value="' + k + '" checked /><label for="' + k + '">' + v + '</label></li>');
     } else {
-      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="' + k + '" /> ' + v + '</li>');
+      $('#st_categories').append('<li><input type="checkbox" id="cat-' + k + '" class="map_cat" value="' + k + '" /><label for="cat-' + k + '"> ' + v + '</label></li>');
     };
   });
 
