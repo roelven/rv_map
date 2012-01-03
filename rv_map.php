@@ -1,10 +1,10 @@
 <?php
 /*
 
-  Plugin Name:    STB Maps
-  Plugin URI:     http://slowtravelberlin.com
-  Description:    Provides map / geodata functionality for Slow Travel Berlin
-  Version:        0.9.6
+  Plugin Name:    Roelven's WP Map
+  Plugin URI:     https://github.com/Roelven/rv_map
+  Description:    Provides map / geodata functionality for your Wordpress site
+  Version:        0.8.1
   Author:         Roel van der Ven
   Author URI:     http://roelvanderven.com
 
