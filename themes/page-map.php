@@ -10,9 +10,17 @@
 
 global $themeoptionsprefix; get_header(); ?>
 
-<div id="content">
+<div id="content" class="mapwrapper">
 
     <div id="map_canvas"></div>
+
+    <div class="map_filter">
+      <h4>Categories</h4>
+      <p id="cat_all_none">
+        (<a href="#" id="cat_all">Show all</a> - <a href="#" id="cat_none">Show none</a>)
+        <ul id="st_categories"></ul>
+      </p>
+    </div>
 
     <?php if (have_posts()) : while (have_posts()) : the_post();
     the_content();

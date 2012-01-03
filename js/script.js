@@ -55,8 +55,6 @@ jQuery(document).ready(function($) {
 
   });
 
-  $('<h1>Categories</h1><p id="cat_all_none">(<a href="#" id="cat_all">Show All</a> - <a href="#" id="cat_none">Show None</a>)</p><ul id="st_categories"></ul><br class="clear" />').insertBefore('#map_canvas');
-
   $('#cat_all').click(function(e) {
     e.preventDefault();
     if(lastInfoWindow){
@@ -82,14 +80,14 @@ jQuery(document).ready(function($) {
   });
 
   $.each(categories, function(k, v) { 
-    if (k === 3) {
+    if (k == 3) {
       $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="' + k + '" checked /> ' + v + '</li>');
     } else {
       $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="' + k + '" /> ' + v + '</li>');
     };
   });
 
-  for (var i=0; i<markers.length; i++) {
+  for (var i=0; i < markers.length; i++) {
     markers[i].setVisible(false);
   }
   $('.map_cat:checked').each(function(k, v) {
@@ -99,7 +97,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $(".map_cat").click(function(e) {
+  $('.map_cat').click(function(e) {
     if(lastInfoWindow){
       lastInfoWindow.close();
     }
