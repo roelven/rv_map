@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
     var stb_location = this,
         marker;
 
-    stbMarker = new google.maps.MarkerImage('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/'+stb_location.cat+'.png');
+    stbMarker = new google.maps.MarkerImage('/wp-content/plugins/rv_map/img/' + stb_location.cat + '.png');
     marker = new google.maps.Marker({
       map: map,
       draggable: false,
@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
 
   });
 
-  $('<h1>Categories</h1><p id="cat_all_none">(<a href="#" id="cat_all">Show All</a> - <a href="#" id="cat_none">Show None</a>)</p><ul id="st_categories"></ul><br class="clear" />').insertBefore("#map_canvas");
+  $('<h1>Categories</h1><p id="cat_all_none">(<a href="#" id="cat_all">Show All</a> - <a href="#" id="cat_none">Show None</a>)</p><ul id="st_categories"></ul><br class="clear" />').insertBefore('#map_canvas');
 
   $('#cat_all').click(function(e) {
     e.preventDefault();
@@ -82,10 +82,10 @@ jQuery(document).ready(function($) {
   });
 
   $.each(categories, function(k, v) { 
-    if (k == 3) {
-      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" checked /> '+ v + '</li>');
+    if (k === 3) {
+      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="' + k + '" checked /> ' + v + '</li>');
     } else {
-      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" /> '+ v + '</li>');
+      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="' + k + '" /> ' + v + '</li>');
     };
   });
 
@@ -95,7 +95,7 @@ jQuery(document).ready(function($) {
   $('.map_cat:checked').each(function(k, v) {
     for (var i=0; i< category_posts[v.value].length; i++) {
       id_markers[category_posts[v.value][i]].setVisible(true);
-      id_markers[category_posts[v.value][i]].setIcon('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/' + v.value + '.png');
+      id_markers[category_posts[v.value][i]].setIcon('/wp-content/plugins/rv_map/img/' + v.value + '.png');
     }
   });
 
@@ -109,19 +109,19 @@ jQuery(document).ready(function($) {
     $('.map_cat:checked').each(function(k, v) {
       for (var i=0; i< category_posts[v.value].length; i++) {
         id_markers[category_posts[v.value][i]].setVisible(true);
-        id_markers[category_posts[v.value][i]].setIcon('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/' + v.value + '.png');
+        id_markers[category_posts[v.value][i]].setIcon('/wp-content/plugins/rv_map/img/' + v.value + '.png');
       }
     });
   });
 
   function infoWindowForTrack(stb_location) {
-    var artwork_url = stb_location.artwork_url ? stb_location.artwork_url.replace('large', 't67x67') : '/images/placeholder-t67x67.png?1',
+    var artwork_url = stb_location.artwork_url ? stb_location.artwork_url.replace('large', 't67x67') : '/images/placeholder-t67x67.png?2',
       content = '<div class="infoWindow">';
-      content += '<div class="thumbnail"><a target="_blank" href="/'+ stb_location.post_name +'"><img src="'+ stb_location.thumbnail +'" width="auto" height="80px" /></a></div>';
+      content += '<div class="thumbnail"><a target="_blank" href="/' + stb_location.post_name + '"><img src="' + stb_location.thumbnail + '" width="auto" height="80px" /></a></div>';
       content += '<div class="metadata">';
-      content += '<h2 class="title"><a target="_blank" href="/'+ stb_location.post_name +'">'+ stb_location.post_title +'</a></h2>';
-      content += stb_location.address +'<br />';
-      content += stb_location.postal_code +' Berlin<br /><br />';
+      content += '<h2 class="title"><a target="_blank" href="/' + stb_location.post_name + '">' + stb_location.post_title + '</a></h2>';
+      content += stb_location.address + '<br />';
+      content += stb_location.postal_code + ' Berlin<br /><br />';
       content += '<a target="_blank" href="/' + stb_location.post_name + '" class="read_more">Read more &rarr;</a><br />';
       content += '</div>';
     return content;
