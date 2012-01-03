@@ -6,24 +6,28 @@
 
 */
 
-  var mapOptions = {
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    center: (new google.maps.LatLng(52.52340510, 13.41139990)),
-    zoom: 12,
-    panControl: true,
-    zoomControl: true,
-    mapTypeControl: false,
-    streetViewControl: false
-  };
-
-  map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-	id_markers = {};
+jQuery(document).ready(function($) {
+  var zIndex = 500,
+    mapOptions = {
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: (new google.maps.LatLng(52.52340510, 13.41139990)),
+      zoom: 12,
+      panControl: true,
+      zoomControl: true,
+      mapTypeControl: false,
+      streetViewControl: false
+    },
+    lastInfoWindow,
+    openMarker,
+    markers = [],
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions),
+    id_markers = {};
 
   $.each(stb_locations, function() {
     var stb_location = this,
         marker;
 
-		stbMarker = new google.maps.MarkerImage('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/'+stb_location.cat+'.png');
+    stbMarker = new google.maps.MarkerImage('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/'+stb_location.cat+'.png');
     marker = new google.maps.Marker({
       map: map,
       draggable: false,
@@ -51,9 +55,9 @@
 
   });
 
-	$('<h1>Categories</h1><p id="cat_all_none">(<a href="#" id="cat_all">Show All</a> - <a href="#" id="cat_none">Show None</a>)</p><ul id="st_categories"></ul><br class="clear" />').insertBefore("#map_canvas");
+  $('<h1>Categories</h1><p id="cat_all_none">(<a href="#" id="cat_all">Show All</a> - <a href="#" id="cat_none">Show None</a>)</p><ul id="st_categories"></ul><br class="clear" />').insertBefore("#map_canvas");
 
-	$("#cat_all").click(function(e) {
+  $("#cat_all").click(function(e) {
 		e.preventDefault();
     if(lastInfoWindow){
       lastInfoWindow.close();
@@ -65,7 +69,7 @@
     }
 	});
 
-	$("#cat_none").click(function(e) {
+  $("#cat_none").click(function(e) {
 		e.preventDefault();
     if(lastInfoWindow){
       lastInfoWindow.close();
@@ -77,38 +81,38 @@
     }
 	});
 
-	$.each(categories, function(k, v) { 
-		if (k == 3) {
-			$("#st_categories").append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" checked /> '+ v + '</li>');
-		} else {
-			$("#st_categories").append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" /> '+ v + '</li>');
-		};
-	});
+  $.each(categories, function(k, v) { 
+    if (k == 3) {
+      $("#st_categories").append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" checked /> '+ v + '</li>');
+    } else {
+      $("#st_categories").append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" /> '+ v + '</li>');
+    };
+  });
 
-	for (var i=0; i<markers.length; i++) {
-		markers[i].setVisible(false);
-	}
-	$(".map_cat:checked").each(function(k,v) {
-		for (var i=0; i< category_posts[v.value].length; i++) {
-			id_markers[category_posts[v.value][i]].setVisible(true);
-			id_markers[category_posts[v.value][i]].setIcon("http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/"+v.value+".png");
-		}	
-	});
+  for (var i=0; i<markers.length; i++) {
+    markers[i].setVisible(false);
+  }
+  $(".map_cat:checked").each(function(k,v) {
+    for (var i=0; i< category_posts[v.value].length; i++) {
+      id_markers[category_posts[v.value][i]].setVisible(true);
+      id_markers[category_posts[v.value][i]].setIcon("http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/"+v.value+".png");
+    }
+  });
 
-	$(".map_cat").click(function(e) {
+  $(".map_cat").click(function(e) {
     if(lastInfoWindow){
       lastInfoWindow.close();
     }
-		for (var i=0; i<markers.length; i++) {
-			markers[i].setVisible(false);
-		}
-		$(".map_cat:checked").each(function(k,v) {
-			for (var i=0; i< category_posts[v.value].length; i++) {
-				id_markers[category_posts[v.value][i]].setVisible(true);
-				id_markers[category_posts[v.value][i]].setIcon("http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/"+v.value+".png");
-			}	
-		});
-	});
+    for (var i=0; i<markers.length; i++) {
+      markers[i].setVisible(false);
+    }
+    $(".map_cat:checked").each(function(k,v) {
+      for (var i=0; i< category_posts[v.value].length; i++) {
+        id_markers[category_posts[v.value][i]].setVisible(true);
+        id_markers[category_posts[v.value][i]].setIcon("http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/"+v.value+".png");
+      }
+    });
+  });
 
   function infoWindowForTrack(stb_location) {
     var artwork_url = stb_location.artwork_url ? stb_location.artwork_url.replace('large', 't67x67') : '/images/placeholder-t67x67.png?1',
@@ -121,4 +125,6 @@
       content += '<a target="_blank" href="/' + stb_location.post_name + '" class="read_more">Read more &rarr;</a><br />';
       content += '</div>';
     return content;
-  }
+  };
+
+});

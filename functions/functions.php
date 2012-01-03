@@ -55,30 +55,79 @@ function rv_printLocationsArray() {
   $locationQuery = 'SELECT '.$wpPostsTable.'.ID, '.$wpPostsTable.'.post_title, '.$wpPostsTable.'.post_name, '.$rvLocationTable.'.location, '.$rvLocationTable.'.address, '.$rvLocationTable.'.postal_code, '.$rvLocationTable.'.area, '.$rvLocationTable.'.latitude, '.$rvLocationTable.'.longitude FROM wp_posts, '.$rvLocationTable.' WHERE '.$wpPostsTable.'.ID = '.$rvLocationTable.'.post_id AND '.$wpPostsTable.'.post_status = "publish"';
   $locations = $wpdb->get_results($locationQuery, ARRAY_A);
 
-  $output .= '[';
+  $output .= 'var categories = {},
+        category_posts = {},
+        stb_locations = [';
+  $cat_name_array = array();
+  $cat_id_array = array();
+
   foreach($locations as $location) {
     if ($location['post_title'] && $location['latitude'] && $location['longitude']) {
+      $categories = get_the_category($location['ID']);
+
+      $def_cat = 0;
+      foreach ($categories as $cat) {
+        if ($def_cat == 0) {
+          $def_cat = $cat->term_id;
+        }
+
+        $cat_id_array[$cat->term_id][] = $location['ID'];
+        $cat_name_array[$cat->term_id] = $cat;
+      }
+
       $stb_title = rv_translatethis($location['post_title']);
+
+      if ($stb_title == 'no matches') {
+        $title = $location['post_title'];
+      } else {
+        $title = $stb_title['en'];
+      }
+
       $stb_image = rv_getAttachment($location['ID']);
       $stb_thumbnail = wp_get_attachment_thumb_url($stb_image[0]->ID);
       $output .= '{';
       $output .= '"ID":'.$location['ID'].',';
       $output .= '"thumbnail":"'.$stb_thumbnail.'",';
-      $output .= '"post_title":"'.htmlentities($stb_title['en']).'",';
-      $output .= '"post_name":"'.htmlentities($location['post_name']).'",';
+      $output .= '"post_title":"'.$title.'",';
+      $output .= '"post_name":"'.$location['post_name'].'",';
       $output .= '"location":"'.$location['location'].'",';
       $output .= '"address":"'.$location['address'].'",';
-      $output .= '"postal_code":'.$location['postal_code'].',';
+      $output .= '"postal_code":"'.$location['postal_code'].'",';
       $output .= '"area":"'.$location['area'].'",';
       $output .= '"lat":'.$location['latitude'].',';
-      $output .= '"lon":'.$location['longitude'];
+      $output .= '"lon":'.$location['longitude'].',';
+      $output .= '"cat":'.$def_cat.',';
       $output .= '},'."\n";
+      }
     }
+
+    $output .= '];'."\n";
+
+    $valid_cat_array = array(
+      '1040', // art and culture
+      '27', // design and arch
+      '34', // family
+      '3', // food & drink
+      '40', // health and fitness
+      //'21', // meet the locals
+      '650', // Nightlife
+      '39', // off the beaten track
+      '110', // Old Berlin
+      '240', // shopping
+    );
+
+    foreach ($cat_name_array as $id => $cat) {
+      if (in_array($id, $valid_cat_array)) { 
+        $output .= 'categories["'.$id.'"] = "'.$cat->name.'";'."\n";
+      }
+    }
+    foreach ($cat_id_array as $id => $post_array) {
+      if (in_array($id, $valid_cat_array)) { 
+        $output .= 'category_posts["'.$id.'"] = ['.implode(",", $post_array).'];'."\n";
+      }
   }
-  $output .= ']';
 
   return $output;
-
 }
 
 // Get custom styles in plugin on admin

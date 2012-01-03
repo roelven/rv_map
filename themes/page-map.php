@@ -23,8 +23,10 @@ global $themeoptionsprefix; get_header(); ?>
 
 </div>
   <script>
-    /* print array stb_locations with PHP, function rv_printLocationsArray */
-    <?php print rv_printLocationsArray(); ?>
+    <?php
+    // print array stb_locations with PHP, function rv_printLocationsArray */
+    print rv_printLocationsArray();
+    ?>
   </script>
 
 <style type="text/css">
