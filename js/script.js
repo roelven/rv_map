@@ -57,45 +57,45 @@ jQuery(document).ready(function($) {
 
   $('<h1>Categories</h1><p id="cat_all_none">(<a href="#" id="cat_all">Show All</a> - <a href="#" id="cat_none">Show None</a>)</p><ul id="st_categories"></ul><br class="clear" />').insertBefore("#map_canvas");
 
-  $("#cat_all").click(function(e) {
-		e.preventDefault();
+  $('#cat_all').click(function(e) {
+    e.preventDefault();
     if(lastInfoWindow){
       lastInfoWindow.close();
     }
 
-		$(".map_cat").attr("checked", true);
-		for (var i=0; i<markers.length; i++) {
+    $('.map_cat').attr('checked', true);
+    for (var i=0; i<markers.length; i++) {
       markers[i].setVisible(true);
     }
-	});
+  });
 
-  $("#cat_none").click(function(e) {
-		e.preventDefault();
+  $('#cat_none').click(function(e) {
+    e.preventDefault();
     if(lastInfoWindow){
       lastInfoWindow.close();
     }
 
-		$(".map_cat").attr("checked", false);
-		for (var i=0; i<markers.length; i++) {
+    $('.map_cat').attr('checked', false);
+    for (var i=0; i<markers.length; i++) {
       markers[i].setVisible(false);
     }
-	});
+  });
 
   $.each(categories, function(k, v) { 
     if (k == 3) {
-      $("#st_categories").append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" checked /> '+ v + '</li>');
+      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" checked /> '+ v + '</li>');
     } else {
-      $("#st_categories").append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" /> '+ v + '</li>');
+      $('#st_categories').append('<li><input type="checkbox" name="category" class="map_cat" value="'+k+'" /> '+ v + '</li>');
     };
   });
 
   for (var i=0; i<markers.length; i++) {
     markers[i].setVisible(false);
   }
-  $(".map_cat:checked").each(function(k,v) {
+  $('.map_cat:checked').each(function(k, v) {
     for (var i=0; i< category_posts[v.value].length; i++) {
       id_markers[category_posts[v.value][i]].setVisible(true);
-      id_markers[category_posts[v.value][i]].setIcon("http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/"+v.value+".png");
+      id_markers[category_posts[v.value][i]].setIcon('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/' + v.value + '.png');
     }
   });
 
@@ -106,10 +106,10 @@ jQuery(document).ready(function($) {
     for (var i=0; i<markers.length; i++) {
       markers[i].setVisible(false);
     }
-    $(".map_cat:checked").each(function(k,v) {
+    $('.map_cat:checked').each(function(k, v) {
       for (var i=0; i< category_posts[v.value].length; i++) {
         id_markers[category_posts[v.value][i]].setVisible(true);
-        id_markers[category_posts[v.value][i]].setIcon("http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/"+v.value+".png");
+        id_markers[category_posts[v.value][i]].setIcon('http://slowtravelberlin.com/wp-content/themes/news-magazine-theme-640/images/map/' + v.value + '.png');
       }
     });
   });
