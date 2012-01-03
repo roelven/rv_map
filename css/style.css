@@ -1,0 +1,61 @@
+/*
+
+	Quickie CSS styles for Geo tryout
+
+*/
+
+html.js .nojs{
+	display: none;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clearboth {
+	clear: both;
+}
+
+#post-body #meta-box-sortables {
+  min-width: 495px;
+}
+
+#rv_sectionid {
+  overflow: hidden;
+}
+
+#rv_sectionid .inside {
+  position: relative;
+  min-width: 495px;
+}
+
+#rv_sectionid .stb_map_wrapper {
+  margin-right: 170px;
+}
+
+#rv_sectionid .stb_map_wrapper_inner {
+  width: 280px;
+}
+
+#rv_sectionid .stb_map_container {
+  width: 170px;
+  float: right;
+}
+
+.stb_map.loading {
+  margin-left: 80px !important;
+  margin-top: 30px !important;
+}
+
+#rv_sectionid .inside label {
+  width: 50px;
+  display: inline-block;
+  height: 14px;
+  text-align: right;
+  padding: 0px 5px;
+}
+
