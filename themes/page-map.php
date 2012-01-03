@@ -14,7 +14,7 @@ global $themeoptionsprefix; get_header(); ?>
 
     <div id="map_canvas"></div>
 
-		<?php if (have_posts()) : while (have_posts()) : the_post();
+    <?php if (have_posts()) : while (have_posts()) : the_post();
     the_content();
     endwhile;
     endif;
@@ -22,11 +22,7 @@ global $themeoptionsprefix; get_header(); ?>
     ?>
 
 </div>
-  <script>
-    <?php
-    // print array stb_locations with PHP, function rv_printLocationsArray */
-    print rv_printLocationsArray();
-    ?>
-  </script>
+
+<?php print rv_printLocationsArray(); ?>
 
 <?php get_footer(); ?>

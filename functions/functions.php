@@ -55,7 +55,8 @@ function rv_printLocationsArray() {
   $locationQuery = 'SELECT '.$wpPostsTable.'.ID, '.$wpPostsTable.'.post_title, '.$wpPostsTable.'.post_name, '.$rvLocationTable.'.location, '.$rvLocationTable.'.address, '.$rvLocationTable.'.postal_code, '.$rvLocationTable.'.area, '.$rvLocationTable.'.latitude, '.$rvLocationTable.'.longitude FROM wp_posts, '.$rvLocationTable.' WHERE '.$wpPostsTable.'.ID = '.$rvLocationTable.'.post_id AND '.$wpPostsTable.'.post_status = "publish"';
   $locations = $wpdb->get_results($locationQuery, ARRAY_A);
 
-  $output .= 'var categories = {},
+  $output .= '<script>
+        var categories = {},
         category_posts = {},
         stb_locations = [';
   $cat_name_array = array();
@@ -126,6 +127,7 @@ function rv_printLocationsArray() {
         $output .= 'category_posts["'.$id.'"] = ['.implode(",", $post_array).'];'."\n";
       }
   }
+  $output .= '</script>'."\n";
 
   return $output;
 }
