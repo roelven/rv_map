@@ -1,15 +1,16 @@
 <?php
 
 /*
+
   Simple Curl proxy for grabbing the Google maps JSON through this IP,
-  since Google is not supporting JSONP and jQuery needs that callback
+  since Google is not supporting JSONP and jQuery needs that callback.
 
   See for more info: http://blog.mikecouturier.com/2009/11/jsonp-and-google-maps-api-geocoder-not.html
 
   Query URI: proxy.php?street=mehringdamm&number=55&area=kreuzberg&postal_code=10999&city=berlin&country=de
-  Returns JSON: {"lat":52.491221,"lon":13.38742}
-
-  Author: Roel van der Ven
+  Returns JSON:
+  
+    {"lat":52.491221,"lon":13.38742}
 
 */
 
