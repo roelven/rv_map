@@ -28,5 +28,4 @@ if(is_admin()) {
 
 add_action('template_redirect', 'rv_map_redirect');
 
-
 ?>

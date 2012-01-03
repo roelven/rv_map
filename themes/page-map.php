@@ -1,6 +1,11 @@
 <?php
 /*
-Template Name: Maps page
+
+  Plugin Name:    Roelven's WP Map
+  Plugin URI:     https://github.com/Roelven/rv_map
+  Description:    Provides map / geodata functionality for your Wordpress site
+  Template Name:  Maps page
+
 */
 
 global $themeoptionsprefix; get_header(); ?>
@@ -18,9 +23,10 @@ global $themeoptionsprefix; get_header(); ?>
 
 </div>
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.1.min.js"><\/script>')</script>
+  <?php
+    // Include jQuery in a very hacky way. Will be ignored if jQuery is already printed in the head
+    wp_print_scripts('jquery');
+  ?>
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
 
   <script>
