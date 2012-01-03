@@ -1,6 +1,6 @@
 /*
 
-	JS 
+	Maps JS for admin
 
 */
 
@@ -8,11 +8,11 @@ var $ = jQuery.noConflict();
 
 $(document).ready(function() {
 
-  // coördinates available? Then show the map tile already!
+  // coordinates available? Then show the map tile already!
   if ($('#rv_latitude').val() && $('#rv_longitude').val()) {
     $('.stb_map').addClass('loading').attr('src', '/wp-content/plugins/RV_maps/img/loading.gif').attr('width', 30).attr('height', 30);
     var maptile = 'http://maps.google.com/maps/api/staticmap?center='+ $('#rv_latitude').val() + ',' + $('#rv_longitude').val() +'&sensor=false&zoom=15&size=170x100&markers=icon:http://slowtravelberlin.com/stb_map_icon3.png|'+ $('#rv_latitude').val() + ',' + $('#rv_longitude').val();
-    console.log(maptile);
+    // console.log(maptile);
     $('.stb_map').removeClass('loading').attr('src', maptile).attr('width', 170).attr('height', 100);
   };
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
     var country = 'DE';
 
      var dataString = encodeURI('street='+ address + '&postal_code=' + postal_code + '&city=' + city + '&country=' + country);
-     console.log(dataString);
+     // console.log(dataString);
      $.ajax({
        type: 'GET',
        processData: true,

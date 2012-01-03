@@ -16,12 +16,12 @@ if (basename($_SERVER['PHP_SELF']) == basename (__FILE__)) {
 }
 
 // Include function library
-include_once(WP_PLUGIN_DIR . '/RV_map/functions/functions.php');
+include_once(WP_PLUGIN_DIR . '/rv_map/functions/functions.php');
 
 // Only run on wp-admin pages:
 if(is_admin()) {
-  add_action('admin_init',      'rv_maps_register_style');
-  add_action('admin_init',      'rv_maps_register_script');
+  add_action('admin_init',      'rv_map_register_style');
+  add_action('admin_init',      'rv_map_register_script');
   add_action('add_meta_boxes',  'rv_add_custom_box');
   add_action('save_post',       'rv_save_postdata');
 }

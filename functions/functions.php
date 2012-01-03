@@ -68,16 +68,16 @@ function rv_printLocationsArray() {
 }
 
 // Get custom styles in plugin on admin
-function rv_maps_register_style() {
-  wp_register_style('rv_mapstyles', WP_PLUGIN_URL . '/RV_maps/css/style.css?v4');
-  wp_enqueue_style('rv_mapstyles');
+function rv_map_register_style() {
+  wp_register_style('rv_maptyles', WP_PLUGIN_URL . '/rv_map/css/style.css?v4');
+  wp_enqueue_style('rv_maptyles');
 }
 
 // Load custom javascript through wp script loader
-function rv_maps_register_script() {
+function rv_map_register_script() {
   wp_enqueue_script('jquery');
-  wp_register_script('rv_maps_js', WP_PLUGIN_URL . '/RV_maps/js/script.js?v4', 'jquery');
-  wp_enqueue_script('rv_maps_js');
+  wp_register_script('rv_map_js', WP_PLUGIN_URL . '/rv_map/js/admin-script.js', 'jquery');
+  wp_enqueue_script('rv_map_js');
 }
 
 
@@ -100,7 +100,7 @@ function rv_inner_custom_box() {
 
   print '
       <div class="stb_map_container">
-        <img class="stb_map loading" src="/wp-content/plugins/RV_maps/img/loading.gif" alt="Preview location" width="30" height="30" />
+        <img class="stb_map loading" src="/wp-content/plugins/rv_map/img/loading.gif" alt="Preview location" width="30" height="30" />
       </div>
     ';
 
