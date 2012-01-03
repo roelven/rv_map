@@ -27,5 +27,6 @@ if(is_admin()) {
 }
 
 add_action('template_redirect', 'rv_map_redirect');
+add_action('init',              'rv_enqueue_scripts');
 
 ?>
