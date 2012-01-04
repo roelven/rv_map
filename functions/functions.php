@@ -181,9 +181,13 @@ function rv_inner_custom_box() {
             <option value="">- select -</option>
             <option value="Charlottenburg" '; if($locationQuery['area'] == 'Charlottenburg') { print 'selected="selected"';}; print '>Charlottenburg</option>
             <option value="Friedrichshain" '; if($locationQuery['area'] == 'Friedrichshain') { print 'selected="selected"';}; print '>Friedrichshain</option>
+            <option value="Lichtenberg" '; if($locationQuery['area'] == 'Lichtenberg') { print 'selected="selected"';}; print '>Lichtenberg</option>
+            <option value="Marzahn-Hellersdorf" '; if($locationQuery['area'] == 'Marzahn-Hellersdorf') { print 'selected="selected"';}; print '>Marzahn-Hellersdorf</option>
+            <option value="Treptow-Köpenick" '; if($locationQuery['area'] == 'Treptow-Köpenick') { print 'selected="selected"';}; print '>Treptow-Köpenick</option>
             <option value="Grunewald" '; if($locationQuery['area'] == 'Grunewald') { print 'selected="selected"';}; print '>Grunewald</option>
             <option value="Kreuzberg" '; if($locationQuery['area'] == 'Kreuzberg') { print 'selected="selected"';}; print '>Kreuzberg</option>
             <option value="Mitte" '; if($locationQuery['area'] == 'Mitte') { print 'selected="selected"';}; print '>Mitte</option>
+            <option value="Weißensee" '; if($locationQuery['area'] == 'Weißensee') { print 'selected="selected"';}; print '>Weißensee</option>
             <option value="Neukölln" '; if($locationQuery['area'] == 'Neukölln') { print 'selected="selected"';}; print '>Neukölln</option>
             <option value="Pankow" '; if($locationQuery['area'] == 'Pankow') { print 'selected="selected"';}; print '>Pankow</option>
             <option value="Prenzlauer Berg" '; if($locationQuery['area'] == 'Prenzlauer Berg') { print 'selected="selected"';}; print '>Prenzlauer Berg</option>
