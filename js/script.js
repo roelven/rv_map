@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
 
   });
 
-  $('#cat_all').click(function(e) {
+  $('.cat_all').click(function(e) {
     e.preventDefault();
     if(lastInfoWindow){
       lastInfoWindow.close();
@@ -67,7 +67,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $('#cat_none').click(function(e) {
+  $('.cat_none').click(function(e) {
     e.preventDefault();
     if(lastInfoWindow){
       lastInfoWindow.close();
@@ -81,9 +81,9 @@ jQuery(document).ready(function($) {
 
   $.each(categories, function(k, v) { 
     if (k == 3) {
-      $('#st_categories').append('<li><input type="checkbox" id="cat-' + k + '" class="map_cat" value="' + k + '" checked /><label for="' + k + '">' + v + '</label></li>');
+      $('.st_categories').append('<li><input type="checkbox" id="cat-' + k + '" class="map_cat" value="' + k + '" checked /><label for="' + k + '">' + v + '</label></li>');
     } else {
-      $('#st_categories').append('<li><input type="checkbox" id="cat-' + k + '" class="map_cat" value="' + k + '" /><label for="cat-' + k + '"> ' + v + '</label></li>');
+      $('.st_categories').append('<li><input type="checkbox" id="cat-' + k + '" class="map_cat" value="' + k + '" /><label for="cat-' + k + '"> ' + v + '</label></li>');
     };
   });
 

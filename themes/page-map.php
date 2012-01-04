@@ -16,11 +16,17 @@ global $themeoptionsprefix; get_header(); ?>
 
     <div class="map_filter">
       <h4>Categories</h4>
-      <p id="cat_all_none">
-        (<a href="#" id="cat_all">Show all</a> - <a href="#" id="cat_none">Show none</a>)
-        <ul id="st_categories"></ul>
+      <p class="cat_all_none">
+        (<a href="#" class="cat_all">Show all</a> - <a href="#" class="cat_none">Show none</a>)
+        <ul class="st_categories"></ul>
       </p>
+
+      <!-- <h4>Neighbourhoods</h4>
+      <p class="cat_all_none">
+        <ul class="st_areas"></ul>
+      </p> -->
     </div>
+
 
     <?php if (have_posts()) : while (have_posts()) : the_post();
     the_content();
