@@ -1,6 +1,6 @@
 # RV_MAP
 
-A Wordpress plugin to add location info to posts and aggregate them on a Google Map
+A Wordpress plugin to add location info to posts and aggregate them on a Google Map. It's now tailored to Berlin, but you should be able to add your own areas and cities pretty easy. This plugin has been developed for [slowtravelberlin.com](http://slowtravelberlin.com), check it out at [http://slowtravelberlin.com/map/](http://slowtravelberlin.com/map/).
 
 ## What does it do
 
@@ -15,6 +15,7 @@ A Wordpress plugin to add location info to posts and aggregate them on a Google 
 
 ## What does it not do
 
-*   Generate the page by itself
+*   Generate the wordpress page by itself
+*   Supports multiple cities / areas
 *   Handle categories nicely
 *   Handles the CSS
