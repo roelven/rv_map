@@ -11,7 +11,7 @@ function rv_enqueue_scripts() {
   if (!is_admin()) {
     wp_register_script('jquery');
     wp_register_script('gmaps', 'http://maps.googleapis.com/maps/api/js?sensor=false', null, '', true);
-    wp_register_script('rv_map_script', '/wp-content/plugins/rv_map/js/script.js', 'jquery', '', true);
+    wp_register_script('rv_map_script', '/wp-content/plugins/rv_map/js/script.js?456', 'jquery', '', true);
 
     // Enqueue the scripts in the preferred order
     wp_enqueue_script('jquery');

@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   // coordinates available? Then show the map tile already!
   if ($('#rv_latitude').val() && $('#rv_longitude').val()) {
-    $('.stb_map').addClass('loading').attr('src', '/wp-content/plugins/RV_maps/img/loading.gif').attr('width', 30).attr('height', 30);
+    $('.stb_map').addClass('loading').attr('src', '/wp-content/plugins/rv_map/img/loading.gif').attr('width', 30).attr('height', 30);
     var maptile = 'http://maps.google.com/maps/api/staticmap?center='+ $('#rv_latitude').val() + ',' + $('#rv_longitude').val() +'&sensor=false&zoom=15&size=170x100&markers=icon:http://slowtravelberlin.com/stb_map_icon3.png|'+ $('#rv_latitude').val() + ',' + $('#rv_longitude').val();
     // console.log(maptile);
     $('.stb_map').removeClass('loading').attr('src', maptile).attr('width', 170).attr('height', 100);
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   // onBlur of postalcode, try to locate the exact spot and populate the latitude / longitude fields
   $('#rv_postal_code').blur(function() {
-    $('.stb_map').addClass('loading').attr('src', '/wp-content/plugins/RV_maps/img/loading.gif').attr('width', 30).attr('height', 30);
+    $('.stb_map').addClass('loading').attr('src', '/wp-content/plugins/rv_map/img/loading.gif').attr('width', 30).attr('height', 30);
     var address = $('#rv_address').val();
     var postal_code = $('#rv_postal_code').val();
     var city = 'Berlin';
@@ -29,7 +29,7 @@ $(document).ready(function() {
      $.ajax({
        type: 'GET',
        processData: true,
-       url: '/wp-content/plugins/RV_maps/functions/proxy.php',
+       url: '/wp-content/plugins/rv_map/functions/proxy.php',
        dataType: 'json',
        data: dataString,
        success: function(results) {

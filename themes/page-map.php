@@ -21,10 +21,10 @@ global $themeoptionsprefix; get_header(); ?>
         <ul class="st_categories"></ul>
       </p>
 
-      <!-- <h4>Neighbourhoods</h4>
+      <h4>Neighbourhoods</h4>
       <p class="cat_all_none">
         <ul class="st_areas"></ul>
-      </p> -->
+      </p>
     </div>
 
 
