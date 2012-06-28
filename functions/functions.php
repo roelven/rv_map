@@ -32,7 +32,7 @@ function rv_showMap($postID) {
 
   $locationTable = $wpdb->prefix.'stbgeodata';
   $locationQuery = $wpdb->get_row("SELECT address, postal_code, city, country FROM $locationTable WHERE post_id = $postID", ARRAY_A);
-  $address = $locationQuery[address].', '.$locationQuery[postal_code].' '.$locationQuery[city].', '.$locationQuery[country];
+  $address = $locationQuery[address].', '.$locationQuery[postal_code].' '.$locationQuery[city];
   $mapImage= $maps_uri.'?center='.urlencode($address).'&sensor=false&zoom=15&size='.$mapWidth.'x'.$mapHeight.'&markers=icon:'.$mapIcon.'|'.urlencode($address);
 
   if ($locationQuery[address] && $locationQuery[postal_code]) {
